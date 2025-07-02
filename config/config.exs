@@ -12,7 +12,7 @@ config :ash_oban, pro?: false
 config :watercooler, Oban,
   engine: Oban.Engines.Basic,
   notifier: Oban.Notifiers.Postgres,
-  queues: [default: 10],
+  queues: [default: 10, chat_responses: [limit: 10], conversations: [limit: 10]],
   repo: Watercooler.Repo,
   plugins: [{Oban.Plugins.Cron, []}]
 
@@ -60,7 +60,7 @@ config :spark,
 config :watercooler,
   ecto_repos: [Watercooler.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Watercooler.Accounts]
+  ash_domains: [Watercooler.Chat, Watercooler.Accounts]
 
 # Configures the endpoint
 config :watercooler, WatercoolerWeb.Endpoint,
