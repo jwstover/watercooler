@@ -94,10 +94,11 @@ defmodule WatercoolerWeb.CoreComponents do
 
   def button(%{rest: rest} = assigns) do
     variants = %{
-    "primary" => "btn-primary",
-    "secondary" => "btn-secondary",
-    nil => "btn-primary btn-soft"
+      "primary" => "btn-primary",
+      "secondary" => "btn-secondary",
+      nil => "btn-primary btn-soft"
     }
+
     assigns = assign(assigns, :class, Map.fetch!(variants, assigns[:variant]))
 
     if rest[:href] || rest[:navigate] || rest[:patch] do

@@ -26,6 +26,7 @@ defmodule WatercoolerWeb.Router do
     pipe_through :browser
 
     ash_authentication_live_session :authenticated_routes do
+      live "/", HomeLive.Index, :home
       live "/chat", ChatLive
       live "/chat/:conversation_id", ChatLive
       # in each liveview, add one of the following at the top of the module:
@@ -43,8 +44,6 @@ defmodule WatercoolerWeb.Router do
 
   scope "/", WatercoolerWeb do
     pipe_through :browser
-
-    live "/", HomeLive.Index, :home
 
     auth_routes AuthController, Watercooler.Accounts.User, path: "/auth"
     sign_out_route AuthController

@@ -39,20 +39,20 @@ defmodule WatercoolerWeb.Layouts do
         </a>
       </div>
       <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <a href="https://phoenixframework.org/" class="btn btn-ghost">Website</a>
-          </li>
-          <li>
-            <a href="https://github.com/phoenixframework/phoenix" class="btn btn-ghost">GitHub</a>
-          </li>
+        <ul class="flex px-1 space-x-4 items-center">
           <li>
             <.theme_toggle />
           </li>
-          <li>
-            <a href="https://hexdocs.pm/phoenix/overview.html" class="btn btn-primary">
-              Get Started <span aria-hidden="true">&rarr;</span>
-            </a>
+          <li :if={is_nil(@current_user)}>
+            <.button variant="primary" navigate={~p"/sign-in"}>Log In</.button>
+          </li>
+          <li :if={@current_user}>
+            <details class="dropdown">
+              <summary class="btn m-1">{@current_user.email}</summary>
+              <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a href={~p"/sign-out"}>Logout</a></li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
