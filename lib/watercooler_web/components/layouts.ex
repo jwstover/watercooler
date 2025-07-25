@@ -19,7 +19,7 @@ defmodule WatercoolerWeb.Layouts do
       <Layouts.app flash={@flash}>
         <h1>Content</h1>
       </Layout.app>
-      
+
   """
   attr :flash, :map, required: true, doc: "the map of flash messages"
 
@@ -42,6 +42,9 @@ defmodule WatercoolerWeb.Layouts do
         <ul class="flex px-1 space-x-4 items-center">
           <li>
             <.theme_toggle />
+          </li>
+          <li :if={@current_user}>
+            <.button class="btn btn-outline-primary" navigate={~p"/chat"}>chat</.button>
           </li>
           <li :if={is_nil(@current_user)}>
             <.button variant="primary" navigate={~p"/sign-in"}>Log In</.button>
