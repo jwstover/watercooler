@@ -22,6 +22,8 @@ defmodule WatercoolerWeb.Layouts do
 
   """
   attr :flash, :map, required: true, doc: "the map of flash messages"
+  attr :current_user, :map,
+    default: nil
 
   attr :current_scope, :map,
     default: nil,
@@ -44,7 +46,7 @@ defmodule WatercoolerWeb.Layouts do
             <.theme_toggle />
           </li>
           <li :if={@current_user}>
-            <.button class="btn btn-outline-primary" navigate={~p"/chat"}>chat</.button>
+            <.button class="btn-primary btn-outline" navigate={~p"/chat"}>chat</.button>
           </li>
           <li :if={is_nil(@current_user)}>
             <.button variant="primary" navigate={~p"/sign-in"}>Log In</.button>
