@@ -46,7 +46,7 @@ defmodule WatercoolerWeb.Layouts do
             <.theme_toggle />
           </li>
           <li :if={@current_user}>
-            <.button class="btn-primary btn-outline" navigate={~p"/chat"}>chat</.button>
+            <.button navigate={~p"/chat"}>chat</.button>
           </li>
           <li :if={is_nil(@current_user)}>
             <.button variant="primary" navigate={~p"/sign-in"}>Log In</.button>

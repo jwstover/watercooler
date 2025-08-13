@@ -37,7 +37,7 @@ defmodule Watercooler.Chat.Conversation.Changes.GenerateName do
       %{
         llm:
           ChatOpenAI.new!(%{
-            model: "gpt-4o",
+            model: "ai/llama3.2:latest",
             custom_context: Map.new(Ash.Context.to_opts(context))
           }),
         verbose?: true

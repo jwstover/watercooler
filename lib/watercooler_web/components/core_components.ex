@@ -93,6 +93,7 @@ defmodule WatercoolerWeb.CoreComponents do
   slot :inner_block, required: true
 
   def button(%{rest: rest} = assigns) do
+    IO.inspect(assigns)
     variants = %{
       "primary" => "btn-primary",
       "secondary" => "btn-secondary",
@@ -100,7 +101,7 @@ defmodule WatercoolerWeb.CoreComponents do
     }
 
     assigns = assign(assigns, :class, Map.fetch!(variants, assigns[:variant]))
-
+    IO.inspect(assigns)
     if rest[:href] || rest[:navigate] || rest[:patch] do
       ~H"""
       <.link class={["btn", @class]} {@rest}>

@@ -32,7 +32,8 @@ defmodule Watercooler.Chat.Message.Changes.Respond do
       %{
         llm:
           ChatOpenAI.new!(%{
-            model: "gpt-4o",
+            model: "ai/llama3.2:latest",
+            endpoint: "http://localhost:12434/engines/llama.cpp/v1/models",
             stream: true,
             custom_context: Map.new(Ash.Context.to_opts(context))
           })
